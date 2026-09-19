@@ -1,0 +1,6 @@
+{
+  "name": "Physical State Field",
+  "description": "Sparse multi-sensor quantum-embedding world model simulator with adaptive uncertainty and physical query engine.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
