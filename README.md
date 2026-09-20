@@ -2,17 +2,25 @@
 
 # Physical State Field (PSF)
 ### Sparse Multi-Sensor Quantum-Inspired 3D Substrate & World Model Simulator
-#### Prototype v1.0 • Deterministic Spatial Physics Instrument
+#### `physical-state-field` • `psf-world-model`
 
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x%20%2F%207.0-blue?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
-[![Three.js](https://img.shields.io/badge/Three.js-WebGL%203D-black?logo=three.js&logoColor=white)](https://threejs.org/)
-[![TailwindCSS](https://img.shields.io/badge/Tailwind-v4.0-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Express](https://img.shields.io/badge/Express-Backend%20Proxy-lightgrey?logo=express&logoColor=black)](https://expressjs.com/)
-[![xAI Grok](https://img.shields.io/badge/xAI%20Grok-Primary%20Explanation%20Layer-black?logo=x&logoColor=white)](https://x.ai/)
-[![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o%20Secondary-412991?logo=openai&logoColor=white)](https://platform.openai.com/)
-[![Tests](https://img.shields.io/badge/Tests-49%2F49%20Passing-brightgreen?logo=vitest&logoColor=white)](#scientific-validation-suite)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Research%20Prototype%20v1.0-orange?style=flat-square)](https://github.com/WalboyTheKing/Sparse-Multi-Sensor-Quantum-Embedding-3D-Substrate-v1)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x%20%2F%207.0-blue?logo=typescript&logoColor=white&style=flat-square)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black&style=flat-square)](https://react.dev/)
+[![Three.js](https://img.shields.io/badge/Three.js-WebGL%203D-black?logo=three.js&logoColor=white&style=flat-square)](https://threejs.org/)
+[![Grid](https://img.shields.io/badge/Substrate-2%2C744%20Voxels%20(14%C3%9714%C3%9714)-blueviolet?style=flat-square)](#)
+[![Sensors](https://img.shields.io/badge/Sensors-4%20Modalities-teal?style=flat-square)](#)
+[![Axiom](https://img.shields.io/badge/Epistemic%20Axiom-UNKNOWN%20%E2%89%A0%200-red?style=flat-square)](#)
+[![xAI Grok](https://img.shields.io/badge/xAI%20Grok-Primary%20Explanation%20Layer-black?logo=x&logoColor=white&style=flat-square)](https://x.ai/)
+[![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o%20Secondary-412991?logo=openai&logoColor=white&style=flat-square)](https://platform.openai.com/)
+[![Tests](https://img.shields.io/badge/Tests-49%2F49%20Passing-brightgreen?logo=vitest&logoColor=white&style=flat-square)](#scientific-validation-suite)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+
+<br />
+
+<img src="./src/assets/images/psf_hero_preview_1789932073066.jpg" alt="Physical State Field 3D Substrate Simulator" width="100%" style="border-radius: 12px; border: 1px solid #334155; margin-top: 14px; margin-bottom: 14px;" />
+
+> **Status:** Research Prototype v1.0 — Functional demonstration of a deterministic multi-sensor physical state substrate.
 
 *A deterministic spatial world-model research prototype unifying multi-modal perception (RGB-D depth, micro-bolometer thermal, FMCW radar Doppler, tactile contact force), quantum-inspired density matrix embeddings, and rigorous epistemic uncertainty quantification.*
 
@@ -225,9 +233,11 @@ Every active spatial node in the field stores the following continuous state rep
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/WalboyTheKing/Sparse-Multi-Sensor-Quantum-Embedding-3D-Substrate-v1.git
-   cd Sparse-Multi-Sensor-Quantum-Embedding-3D-Substrate-v1
+   # Canonical research repository:
+   git clone https://github.com/WalboyTheKing/Sparse-Multi-Sensor-Quantum-Embedding-3D-Substrate-v1.git physical-state-field
+   cd physical-state-field
    ```
+   *(Note: The repository can also be cloned or renamed to the short aliases `physical-state-field` or `psf-world-model`)*
 
 2. **Install dependencies:**
    ```bash
