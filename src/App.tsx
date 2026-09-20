@@ -187,7 +187,7 @@ export default function App() {
     setActiveExperiment(null);
     setHighlightCoords([]);
     temporalWorldRef.current = new TemporalWorld(40);
-    recordGridSnapshotAndEvents(fresh, 'Field Initialization (Vacuum Prior)');
+    recordGridSnapshotAndEvents(fresh, 'Field Initialization (Unobserved Prior)');
   }, [recordGridSnapshotAndEvents]);
 
   // Continuous sweep loop
@@ -275,7 +275,7 @@ export default function App() {
         const iz = coordToIndex(res.contactPoint.z);
         setSelectedVoxelId(voxelKey(ix, iy, iz));
       }
-      recordGridSnapshotAndEvents(freshGrid, 'Experiment 4: Tactile Ground Truth (Uncertainty Reduction)');
+      recordGridSnapshotAndEvents(freshGrid, 'Experiment 4: Tactile Contact Measurement (Uncertainty Reduction)');
       handleRunQuery('What contact force and mechanical pressure was verified by the tactile probe?');
     }
   }, [sensors, recordGridSnapshotAndEvents]);
@@ -494,7 +494,7 @@ export default function App() {
           </div>
 
           {/* Bottom Drawer: Language Query Layer */}
-          <div className="p-4 bg-slate-950/90 border-t border-slate-800 shrink-0 z-10 max-h-64 overflow-y-auto">
+          <div className="p-3 lg:p-3.5 bg-slate-950/95 border-t border-slate-800 shrink-0 z-10 max-h-[360px] overflow-y-auto">
             <QueryConsole
               onRunQuery={handleRunQuery}
               isLoading={isQueryLoading}

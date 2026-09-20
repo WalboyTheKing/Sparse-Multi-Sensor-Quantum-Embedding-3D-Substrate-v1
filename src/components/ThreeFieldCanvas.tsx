@@ -192,7 +192,7 @@ export const ThreeFieldCanvas: React.FC<Props> = ({
       if (sliceAxis === 'y' && pos.y > sliceValue) isSlicedOut = true;
       if (sliceAxis === 'z' && pos.z > sliceValue) isSlicedOut = true;
 
-      // Filter unobserved vacuum points if in matter/thermal modes to keep view clean,
+      // Filter unobserved points if in matter/thermal modes to keep view clean,
       // but in entropy mode, render high-entropy points vividly!
       const isUnobserved = p.state.observationsCount === 0;
       let scale = 1.0;
@@ -203,7 +203,7 @@ export const ThreeFieldCanvas: React.FC<Props> = ({
         if (renderMode === 'entropy') {
           scale = 0.7; // Visible high-entropy cloud
         } else if (renderMode === 'composite') {
-          scale = 0.25; // Subtle unobserved vacuum grid dots
+          scale = 0.25; // Subtle unobserved grid dots
         } else {
           scale = 0.0001; // hide unobserved in physical channels
         }
@@ -521,7 +521,7 @@ export const ThreeFieldCanvas: React.FC<Props> = ({
         <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
         <span className="font-mono">Physical State Field (3D)</span>
         <span className="text-slate-600">|</span>
-        <span>Click voxel to inspect quantum state</span>
+        <span>Click voxel to inspect physical state</span>
       </div>
 
       <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-slate-900/80 backdrop-blur-md p-1.5 rounded-lg border border-slate-800 text-xs">
@@ -543,9 +543,9 @@ export const ThreeFieldCanvas: React.FC<Props> = ({
         {renderMode === 'entropy' && (
           <div className="flex items-center gap-2">
             <span className="w-3 h-3 rounded bg-cyan-400" />
-            <span>Low Entropy (Known / Collapsed)</span>
+            <span>Low Entropy (Observed / Resolved)</span>
             <span className="w-3 h-3 rounded bg-purple-500 ml-2" />
-            <span>High S (Unknown Vacuum)</span>
+            <span>High S (Unknown / Unobserved)</span>
           </div>
         )}
         {renderMode === 'thermal' && (

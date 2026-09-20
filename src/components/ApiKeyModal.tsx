@@ -145,7 +145,7 @@ export const ApiKeyModal: React.FC<Props> = ({
           <div className="space-y-1">
             <div className="font-semibold text-white">Deterministic Substrate Authority:</div>
             <p className="text-slate-400 text-[10px] leading-normal">
-              The Physical State Field is the sole authority for physical reality. External AI providers (OpenAI / xAI) are optional verbalization layers that explain structured deterministic results without altering measured data or inventing UNKNOWN states.
+              The Physical State Field is the sole authority for physical reality. External AI providers (xAI Grok / OpenAI) are optional verbalization layers that explain structured deterministic results without altering measured data or inventing UNKNOWN states.
             </p>
           </div>
         </div>
@@ -170,20 +170,6 @@ export const ApiKeyModal: React.FC<Props> = ({
 
             <button
               type="button"
-              id="btn-provider-openai"
-              onClick={() => { setProvider('openai'); setTestResult({ status: 'idle' }); }}
-              className={`p-2.5 rounded-xl border text-xs font-medium flex flex-col items-center gap-1.5 transition-all cursor-pointer ${
-                provider === 'openai'
-                  ? 'bg-cyan-950/80 border-cyan-500 text-cyan-300 shadow-md shadow-cyan-900/20'
-                  : 'bg-slate-950 border-slate-800 text-slate-400 hover:border-slate-700'
-              }`}
-            >
-              <Sparkles className="w-4 h-4" />
-              <span>OpenAI</span>
-            </button>
-
-            <button
-              type="button"
               id="btn-provider-grok"
               onClick={() => { setProvider('grok'); setTestResult({ status: 'idle' }); }}
               className={`p-2.5 rounded-xl border text-xs font-medium flex flex-col items-center gap-1.5 transition-all cursor-pointer ${
@@ -194,6 +180,20 @@ export const ApiKeyModal: React.FC<Props> = ({
             >
               <Sparkles className="w-4 h-4 text-purple-400" />
               <span>xAI / Grok</span>
+            </button>
+
+            <button
+              type="button"
+              id="btn-provider-openai"
+              onClick={() => { setProvider('openai'); setTestResult({ status: 'idle' }); }}
+              className={`p-2.5 rounded-xl border text-xs font-medium flex flex-col items-center gap-1.5 transition-all cursor-pointer ${
+                provider === 'openai'
+                  ? 'bg-cyan-950/80 border-cyan-500 text-cyan-300 shadow-md shadow-cyan-900/20'
+                  : 'bg-slate-950 border-slate-800 text-slate-400 hover:border-slate-700'
+              }`}
+            >
+              <Sparkles className="w-4 h-4" />
+              <span>OpenAI</span>
             </button>
           </div>
         </div>

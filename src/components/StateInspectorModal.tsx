@@ -51,7 +51,9 @@ export const StateInspectorModal: React.FC<Props> = ({ voxel, onClose }) => {
     ? `${state.energy.toFixed(2)} J/m³`
     : (state.occupancyState === 'KNOWN_MATTER'
         ? `${(1.25 * (state.temperature ? (state.temperature + 273.15) * 0.05 : 15.0)).toFixed(2)} J/m³`
-        : '0.00 J/m³ (Vacuum)');
+        : state.occupancyState === 'KNOWN_EMPTY'
+        ? '0.00 J/m³ (Empty)'
+        : 'UNKNOWN');
 
   const formattedTimestamp = state.lastObservedTimestamp > 0
     ? new Date(state.lastObservedTimestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', fractionalSecondDigits: 3 })
@@ -120,7 +122,7 @@ export const StateInspectorModal: React.FC<Props> = ({ voxel, onClose }) => {
               </div>
               <p className="text-[11px] text-purple-300/80 mt-1 leading-snug">
                 {unknownSubtype === 'occluded'
-                  ? 'Coordinate is situated along a ray path behind a detected solid barrier. High entropy (S = 1.0) is preserved without fabricating vacuum.'
+                  ? 'Coordinate is situated along a ray path behind a detected solid barrier. High entropy (S = 1.0) is preserved without fabricating empty free space.'
                   : unknownSubtype === 'insufficient_coverage'
                   ? 'Sensor signal fell below signal-to-noise threshold in this cell.'
                   : 'Coordinate has not been swept by any active sensor frustum.'}
@@ -340,7 +342,7 @@ export const StateInspectorModal: React.FC<Props> = ({ voxel, onClose }) => {
           <div>
             <span className="text-slate-400 block text-[10px]">Contributing Sensors:</span>
             <span className="text-slate-200">
-              {state.contributingSensors.length > 0 ? state.contributingSensors.join(', ') : 'None (Vacuum Prior)'}
+              {state.contributingSensors.length > 0 ? state.contributingSensors.join(', ') : 'None (Unobserved Prior)'}
             </span>
           </div>
           <div>

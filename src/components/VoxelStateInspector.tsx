@@ -84,7 +84,7 @@ export const VoxelStateInspector: React.FC<Props> = ({
     : (state.occupancyState === 'KNOWN_MATTER'
         ? `${(1.25 * (state.temperature ? (state.temperature + 273.15) * 0.05 : 15.0)).toFixed(2)} J/m³`
         : state.occupancyState === 'KNOWN_EMPTY'
-        ? '0.00 J/m³ (Vacuum)'
+        ? '0.00 J/m³ (Empty)'
         : 'UNKNOWN');
 
   const formattedTimestamp = state.lastObservedTimestamp > 0
@@ -642,7 +642,7 @@ export const VoxelStateInspector: React.FC<Props> = ({
                 <p className="text-[11px] text-slate-300/80 mt-1 leading-relaxed">
                   {isUnknown
                     ? unknownSubtype === 'occluded'
-                      ? 'Physical obstacle detected directly along sensor line-of-sight. Raycasting terminates at obstacle surface, preserving maximal entropy (S = 1.0) in the shadow zone without fabricating empty vacuum or false zeros.'
+                      ? 'Physical obstacle detected directly along sensor line-of-sight. Raycasting terminates at obstacle surface, preserving maximal entropy (S = 1.0) in the shadow zone without fabricating empty free space or false zeros.'
                       : unknownSubtype === 'insufficient_coverage'
                       ? 'Sensory return signal fell below signal-to-noise detection threshold in this spatial voxel.'
                       : 'Coordinate lies outside active sensor frustum sweeps. Physical state is completely unobserved.'
@@ -708,7 +708,7 @@ export const VoxelStateInspector: React.FC<Props> = ({
                 <div className="p-2 rounded-lg bg-slate-900 border border-slate-800">
                   <span className="text-slate-400 block text-[10px]">Contributing Sensor Modalities:</span>
                   <span className="text-slate-200">
-                    {state.contributingSensors.length > 0 ? state.contributingSensors.join(', ') : 'None (Vacuum Prior)'}
+                    {state.contributingSensors.length > 0 ? state.contributingSensors.join(', ') : 'None (Unobserved Prior)'}
                   </span>
                 </div>
                 <div className="p-2 rounded-lg bg-slate-900 border border-slate-800">

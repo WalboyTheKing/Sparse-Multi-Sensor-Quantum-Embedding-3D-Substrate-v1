@@ -52,7 +52,7 @@ export class EventDetectionEngine {
           confidence: curr.propertyConfidences.occupancy,
           uncertainty: curr.propertyUncertainties.occupancy,
           timestamp,
-          evidence: `Voxel occupancy collapsed below free-space threshold from ${prev.occupancy.toFixed(2)} to ${curr.occupancy.toFixed(2)}`,
+          evidence: `Voxel occupancy resolved below free-space threshold from ${prev.occupancy.toFixed(2)} to ${curr.occupancy.toFixed(2)}`,
         });
       }
     }

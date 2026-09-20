@@ -63,7 +63,7 @@ export const SensorControlPanel: React.FC<Props> = ({
           id="btn-reset-field"
           onClick={onResetField}
           className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-200 hover:bg-slate-800 px-2.5 py-1 rounded transition-colors"
-          title="Reset field to high-entropy vacuum prior"
+          title="Reset field to high-entropy unobserved prior"
         >
           <RotateCcw className="w-3.5 h-3.5" />
           <span>Reset Prior</span>
@@ -98,7 +98,7 @@ export const SensorControlPanel: React.FC<Props> = ({
       {/* Sensor List */}
       <div className="flex flex-col gap-2.5">
         <div className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
-          Individual Sensors (Write to Quantum State)
+          Individual Sensors (Write to Physical State)
         </div>
 
         {sensors.map((sensor) => {
@@ -172,7 +172,7 @@ export const SensorControlPanel: React.FC<Props> = ({
             <div className="text-sm font-mono font-semibold text-slate-200 flex items-baseline gap-1.5 mt-0.5">
               <span>{metrics.meanEntropy.toFixed(3)}</span>
               <span className="text-[10px] text-slate-500 font-normal">
-                {metrics.meanEntropy > 0.7 ? '(High Uncertainty)' : '(Collapsed / Known)'}
+                {metrics.meanEntropy > 0.7 ? '(High Uncertainty)' : '(Observed / Known)'}
               </span>
             </div>
           </div>
@@ -185,10 +185,10 @@ export const SensorControlPanel: React.FC<Props> = ({
           </div>
 
           <div className="bg-slate-950 p-2 rounded border border-slate-800/80">
-            <div className="text-[10px] text-slate-400">Collapsed vs Unknown</div>
+            <div className="text-[10px] text-slate-400">Observed vs Unknown</div>
             <div className="text-xs font-mono text-slate-300 mt-1 flex items-center justify-between">
               <span className="text-cyan-400">{metrics.observedVoxels} known</span>
-              <span className="text-purple-400">{metrics.unobservedVoxels} vacuum</span>
+              <span className="text-purple-400">{metrics.unobservedVoxels} unobserved</span>
             </div>
           </div>
 

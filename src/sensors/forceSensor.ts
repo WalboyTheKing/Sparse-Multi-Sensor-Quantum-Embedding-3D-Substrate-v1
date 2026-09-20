@@ -7,7 +7,7 @@ export class ForceSensor {
    * Simulates a robotic contact force/tactile probe.
    * Traverses along probe direction from probe origin towards target.
    * If physical boundary is touched, records contact pressure in kPa and triggers
-   * measurement-induced uncertainty reduction ("quantum-inspired state collapse").
+   * measurement-induced uncertainty reduction ("reducing local spatial uncertainty through physical contact measurement").
    */
   public static probe(
     sensor: SensorConfig,

@@ -41,9 +41,9 @@ export const ExperimentPresets: React.FC<Props> = ({
     },
     {
       id: 'tactile_ground_truth' as ExperimentId,
-      title: '4. Tactile Ground Truth',
+      title: '4. Tactile Contact Measurement',
       description: 'Robotic probe presses against physical specimen, performing measurement-induced uncertainty reduction (local spatial entropy drops from 1.0 to 0.02).',
-      badge: 'Direct Ground Truth',
+      badge: 'Direct Contact Measurement',
       badgeColor: 'text-emerald-400 bg-emerald-950/60 border-emerald-800',
       icon: <HandMetal className="w-4 h-4 text-emerald-400" />,
     },

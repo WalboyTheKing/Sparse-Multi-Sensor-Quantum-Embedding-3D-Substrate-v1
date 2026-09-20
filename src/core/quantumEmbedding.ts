@@ -141,7 +141,10 @@ export function calculatePurity(probMatter: number): number {
 }
 
 /**
- * Calculates overall confidence based on entropy and observation counts
+ * Calculates overall confidence based on entropy and observation counts.
+ * NOTE: This is a computational heuristic metric (baseConfidence = 1 - entropy) representing
+ * state determination certainty within this 2-level representation, NOT a universal physical law.
+ * Sensor confidence and epistemic uncertainty remain explicitly tracked per channel.
  */
 export function calculateConfidence(entropy: number, observationsCount: number): number {
   const baseConfidence = Math.max(0, 1 - entropy);
@@ -177,9 +180,9 @@ export function createSnapshotFromState(state: QuantumStateVector): PhysicalStat
 }
 
 /**
- * Update the quantum embedding with an RGB-Depth observation.
- * If ray hit surface: collapses towards KNOWN_MATTER, writes color/light, sharpens occupancy.
- * If ray traversed free space: collapses towards KNOWN_EMPTY.
+ * Update the quantum-inspired embedding with an RGB-Depth observation.
+ * If ray hit surface: resolves towards KNOWN_MATTER, writes color/light, sharpens occupancy.
+ * If ray traversed free space: resolves towards KNOWN_EMPTY (supported by optical transmission).
  */
 export function updateWithRGBD(
   current: QuantumStateVector,
@@ -533,10 +536,10 @@ export function updateWithRadar(
 }
 
 /**
- * Update the quantum embedding with a Direct Contact / Force Probe.
- * Tactile touch provides definitive physical ground truth:
- * Measurement-induced uncertainty reduction ("state collapse in the quantum-inspired representation"):
- * Entropy collapses to near zero (S ~ 0.02, confidence ~ 0.98), writes pressure and confirms solid matter.
+ * Update the quantum-inspired embedding with a Direct Contact / Force Probe.
+ * Tactile touch provides direct physical contact measurement:
+ * Measurement-induced uncertainty reduction ("reducing local spatial uncertainty through physical contact measurement"):
+ * Entropy drops to near zero (S ~ 0.02, confidence ~ 0.98), writes pressure and confirms solid matter.
  */
 export function updateWithForceProbe(
   current: QuantumStateVector,
@@ -545,7 +548,7 @@ export function updateWithForceProbe(
 ): QuantumStateVector {
   const previousSnapshot = current.currentState;
   const newOcc = isSolid ? 0.99 : 0.01;
-  const newEntropy = 0.02; // State collapse in quantum-inspired representation
+  const newEntropy = 0.02; // Reduced local spatial uncertainty from direct contact
   const confidence = 0.98;
   const uncertainty = 0.02;
   const purity = 0.99;

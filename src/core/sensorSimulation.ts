@@ -30,7 +30,7 @@ export function coordToIndex(val: number): number {
 }
 
 /**
- * Initializes the spatial grid where EVERY voxel starts as a quantum vacuum prior
+ * Initializes the spatial grid where EVERY voxel starts as an unobserved state prior (UNKNOWN / UNOBSERVED).
  * Unknown = high entropy / low confidence.
  */
 export function initializeQuantumGrid(): Map<string, VoxelPoint> {
@@ -385,7 +385,7 @@ export function fireRadarSensor(
 /**
  * Simulates the Tactile / Contact Force Probe.
  * Extends probe from its position towards its target until contact with matter occurs.
- * Collapses uncertainty at contact coordinate to near-zero ($S \approx 0.02$).
+ * Reduces local spatial uncertainty through physical contact measurement ($S \approx 0.02$).
  */
 export function fireForceProbe(
   grid: Map<string, VoxelPoint>,
@@ -422,7 +422,7 @@ export function fireForceProbe(
         point.state = updateWithForceProbe(point.state, hitObject.trueHardness, true);
       }
 
-      // Also collapse immediate adjacent neighbor voxels
+      // Also reduce uncertainty for immediate adjacent neighbor voxels
       for (let dx = -1; dx <= 1; dx++) {
         for (let dy = -1; dy <= 1; dy++) {
           for (let dz = -1; dz <= 1; dz++) {

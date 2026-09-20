@@ -70,66 +70,74 @@ export const QueryConsole: React.FC<Props> = ({
   };
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col gap-3 text-slate-200 shadow-xl">
+    <div className="bg-slate-900/95 border border-slate-800 rounded-xl p-3.5 flex flex-col gap-2.5 text-slate-200 shadow-xl w-full">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2">
-          <MessageSquare className="w-4 h-4 text-cyan-400" />
-          <h2 className="text-sm font-semibold text-white tracking-wide uppercase">
+          <MessageSquare className="w-4 h-4 text-cyan-400 shrink-0" />
+          <h2 className="text-xs sm:text-sm font-semibold text-white tracking-wide uppercase">
             Language Query Layer
           </h2>
+          <span className="text-[10px] text-slate-500 font-mono hidden sm:inline">• Deterministic Physics Engine</span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-[11px] font-mono text-slate-400 bg-slate-950 px-2 py-0.5 rounded border border-slate-800">
-            Engine: <span className="text-cyan-400 font-semibold">{activeProviderName}</span>
+          <span className="text-[10px] sm:text-[11px] font-mono text-slate-300 bg-slate-950 px-2 py-0.5 rounded border border-slate-800 flex items-center gap-1">
+            <span className="text-slate-500">Engine:</span>
+            <span className="text-cyan-400 font-semibold">{activeProviderName}</span>
           </span>
           <button
             id="btn-open-api-settings"
             onClick={onOpenSettings}
-            className="flex items-center gap-1 text-xs text-slate-400 hover:text-slate-200 hover:bg-slate-800 px-2 py-1 rounded transition-colors"
+            className="flex items-center gap-1 text-[11px] text-slate-400 hover:text-slate-200 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 px-2 py-1 rounded transition-colors cursor-pointer"
             title="Configure Grok / OpenAI API settings"
           >
-            <Sliders className="w-3.5 h-3.5" />
+            <Sliders className="w-3 h-3 text-cyan-400" />
             <span>API Settings</span>
           </button>
         </div>
       </div>
 
-      <p className="text-[11px] text-slate-400 leading-snug">
-        Language is an interrogative query layer over the underlying quantum embedding substrate. Ask physical questions regarding temperature, free space, motion, or entropy.
-      </p>
+      {/* Description & Presets Section */}
+      <div className="flex flex-col gap-1.5">
+        <p className="text-[11px] text-slate-400 leading-snug">
+          Language is an interrogative query layer over the underlying quantum-inspired physical substrate. Inquire about temperature, free space clearance, motion, or entropy.
+        </p>
 
-      {/* Preset Query Chips */}
-      <div className="flex flex-wrap gap-1.5">
-        {PRESET_QUERIES.map((preset, idx) => (
-          <button
-            key={idx}
-            id={`preset-query-${idx}`}
-            onClick={() => onRunQuery(preset.prompt)}
-            disabled={isLoading}
-            className="flex items-center gap-1.5 text-xs bg-slate-950 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-slate-300 px-2.5 py-1.5 rounded-lg transition-colors cursor-pointer disabled:opacity-50"
-          >
-            {preset.icon}
-            <span>{preset.label}</span>
-          </button>
-        ))}
+        {/* Preset Query Chips - full visibility with responsive wrapping */}
+        <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
+          <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 mr-1 shrink-0">
+            Presets:
+          </span>
+          {PRESET_QUERIES.map((preset, idx) => (
+            <button
+              key={idx}
+              id={`preset-query-${idx}`}
+              onClick={() => onRunQuery(preset.prompt)}
+              disabled={isLoading}
+              className="flex items-center gap-1.5 text-xs bg-slate-950 hover:bg-slate-800 active:bg-slate-700 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white px-2.5 py-1 rounded-lg transition-colors cursor-pointer disabled:opacity-50 whitespace-nowrap shadow-sm"
+            >
+              {preset.icon}
+              <span className="font-medium">{preset.label}</span>
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Custom Query Input Bar */}
-      <form onSubmit={handleSubmit} className="flex gap-2 mt-1">
+      <form onSubmit={handleSubmit} className="flex gap-2 mt-0.5">
         <input
           id="input-physical-query"
           type="text"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           placeholder="Ask world model: e.g. 'What is the temperature at (0.4, -0.2, 0.2)?' or 'Is path clear?'"
-          className="flex-1 bg-slate-950 border border-slate-800 focus:border-cyan-500 rounded-lg px-3 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-none transition-colors"
+          className="flex-1 bg-slate-950 border border-slate-800 focus:border-cyan-500 rounded-lg px-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none transition-colors"
         />
         <button
           id="btn-submit-query"
           type="submit"
           disabled={!inputText.trim() || isLoading}
-          className="bg-cyan-600 hover:bg-cyan-500 disabled:opacity-40 text-white font-medium px-4 py-2 rounded-lg text-xs flex items-center gap-1.5 transition-all cursor-pointer"
+          className="bg-cyan-600 hover:bg-cyan-500 disabled:opacity-40 text-white font-medium px-3.5 py-1.5 rounded-lg text-xs flex items-center gap-1.5 transition-all cursor-pointer shrink-0"
         >
           {isLoading ? (
             <div className="w-3.5 h-3.5 border-2 border-white/20 border-t-white rounded-full animate-spin" />
@@ -142,7 +150,7 @@ export const QueryConsole: React.FC<Props> = ({
 
       {/* Query Result Card */}
       {currentQuery && (
-        <div className="mt-2 bg-slate-950/80 border border-slate-800 rounded-lg p-3 text-xs flex flex-col gap-2 animate-fade-in">
+        <div className="mt-1 bg-slate-950 border border-slate-800 rounded-lg p-3 text-xs flex flex-col gap-2 animate-fade-in max-h-56 overflow-y-auto shadow-inner">
           <div className="flex items-center justify-between border-b border-slate-800/80 pb-1.5">
             <div className="font-semibold text-cyan-300 flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-cyan-400" />

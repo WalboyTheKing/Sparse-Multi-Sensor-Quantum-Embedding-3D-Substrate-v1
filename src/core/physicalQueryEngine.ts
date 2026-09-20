@@ -150,7 +150,7 @@ export function evaluatePhysicalQuery(
         id,
         timestamp,
         prompt,
-        answer: 'UNKNOWN / UNMEASURED: No solid matter has been confirmed by optical surface raycasts or tactile probes yet. Space remains in uncollapsed epistemic superposition.',
+        answer: 'UNKNOWN / UNMEASURED: No solid matter has been confirmed by optical surface raycasts or tactile probes yet. Space remains in unobserved epistemic state.',
         value: 'UNKNOWN',
         confidence: 0.1,
         uncertainty: 0.9,
@@ -217,7 +217,7 @@ export function evaluatePhysicalQuery(
 
     const isClear = solidCollisions === 0 && highEntropyUnknowns < 5;
     const answer = isClear
-      ? `KNOWN FREE SPACE: Traversal corridor is verified free of solid obstacles (${voidVerified} voxels collapsed to KNOWN_EMPTY via optical ray penetration).`
+      ? `KNOWN FREE SPACE: Traversal corridor is verified free of solid obstacles (${voidVerified} voxels resolved to KNOWN_EMPTY via optical ray penetration).`
       : solidCollisions > 0
       ? `OBSTACLE DETECTED: Path intersects ${solidCollisions} confirmed solid voxels (KNOWN_MATTER). Traversal blocked.`
       : `CAUTION - UNKNOWN / HIGH UNCERTAINTY: Corridor contains ${highEntropyUnknowns} unobserved voxels. UNKNOWN != 0: Unobserved space must NOT be assumed free.`;
@@ -414,7 +414,7 @@ ${pred.explanation}`,
   // 7. UNCERTAINTY & SHADOW AUDIT
   if (analysis.intent === 'uncertainty') {
     let unobservedCount = 0;
-    let collapsedCount = 0;
+    let observedCount = 0;
     let sumEntropy = 0;
 
     for (const point of grid.values()) {
@@ -422,7 +422,7 @@ ${pred.explanation}`,
       if (point.state.observationsCount === 0 || point.state.occupancyState === 'UNKNOWN') {
         unobservedCount++;
       } else {
-        collapsedCount++;
+        observedCount++;
       }
     }
 
@@ -431,10 +431,10 @@ ${pred.explanation}`,
       id,
       timestamp,
       prompt,
-      answer: `Epistemic Uncertainty & Quantum Entropy Audit:
+      answer: `Epistemic Uncertainty & Quantum-Inspired Entropy Audit:
 • Total Spatial Grid: ${grid.size} voxels across [-2.0, +2.0]³ bounds.
-• Mean Field Entropy: S̄ = ${meanS.toFixed(3)} (1.0 = total vacuum uncertainty, 0.0 = measurement-induced uncertainty reduction).
-• Observed Cells: ${collapsedCount} (${((collapsedCount / grid.size) * 100).toFixed(1)}%).
+• Mean Field Entropy: S̄ = ${meanS.toFixed(3)} (1.0 = total unobserved uncertainty, 0.0 = measurement-induced uncertainty reduction).
+• Observed Cells: ${observedCount} (${((observedCount / grid.size) * 100).toFixed(1)}%).
 • High-Entropy Unknowns / Occluded Shadows: ${unobservedCount} (${((unobservedCount / grid.size) * 100).toFixed(1)}%).
 • FUNDAMENTAL PRINCIPLE: UNKNOWN != 0. The volume behind occluding barriers retains maximum entropy (S ≈ 1.0) rather than hallucinating empty space.`,
       value: Number(meanS.toFixed(3)),
@@ -445,7 +445,7 @@ ${pred.explanation}`,
       evidence: `Exhaustive entropy integration over ${grid.size} discrete quantum-inspired state vectors`,
       metrics: {
         meanEntropy: meanS.toFixed(3),
-        collapsedVoxels: collapsedCount,
+        observedVoxels: observedCount,
         unknownVoxels: unobservedCount,
       },
       source: 'deterministic_physics',
